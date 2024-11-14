@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Front\Client;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class ClientsController extends Controller
+{
+   
+    public function index()
+    {
+      $data=[];
+      $data['clients']=DB::table('clients')->where('flag',1)->get();
+      $data['settings']=DB::table('settings')->where('flag',1)->get();
+      
+    
+	return view('front.client.index')->with($data);
+    } 
+}
